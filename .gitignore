@@ -15,5 +15,6 @@ package-lock.json
 # dist
 dist/*
 !dist/.htaccess
+public/
 _delivery_*/
 Release/
