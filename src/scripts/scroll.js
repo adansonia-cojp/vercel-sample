@@ -43,14 +43,21 @@ var onceProcessScrollEvent = function() {
 function viewportInAddClass(elm,activeClass,offset){
   var activeClass = typeof activeClass !== 'undefined' ?  activeClass : 'active';
   var offset = typeof offset !== 'undefined' ?  offset : 0;
+  var timer = false;
+  
   $(window).on('scroll load',function () {
-    $(elm).each(function(i,e){
-        var $scrollBottom = $(window).scrollTop() + $(window).height() - offset;
-        var $trigger = $(this).offset().top;
-        if( $scrollBottom > $trigger) {
-            $(this).addClass(activeClass);
-        } 
-    });
+    if (timer !== false) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(function() {
+      $(elm).each(function(i,e){
+          var $scrollBottom = $(window).scrollTop() + $(window).height() - offset;
+          var $trigger = $(this).offset().top;
+          if( $scrollBottom > $trigger) {
+              $(this).addClass(activeClass);
+          } 
+      });
+    }, 16); // 60fps対応
   });
 }
 
@@ -61,12 +68,19 @@ function viewportInAddClass(elm,activeClass,offset){
 function scroll_to_fadein(e) {
   var $elm = $(e);
   $elm.hide();
+  var timer = false;
+  
   $(window).on('scroll load',function () {
-    if ($(this).scrollTop() > 200) {
-      $elm.fadeIn();
-    } else {
-      $elm.fadeOut();
+    if (timer !== false) {
+      clearTimeout(timer);
     }
+    timer = setTimeout(function() {
+      if ($(window).scrollTop() > 200) {
+        $elm.fadeIn();
+      } else {
+        $elm.fadeOut();
+      }
+    }, 16);
   });
 }
 
@@ -75,15 +89,24 @@ function scroll_to_fadein(e) {
  * 指定要素にStickyする
  * @param {String} element 
  * @param {String} target 
- * @param {Nunber} offset 
+ * @param {Number} offset 
  */
 function sticky(element,target,offset) {
   var $elm = $(element);
   var $btn = $elm.children();
   var offset = typeof offset !== 'undefined' ?  offset : 0;
+  var timer = false;
+  
   $(window).on('scroll load',function () {
+    if (timer !== false) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(function() {
       var $w = $(window);
-      var $stickyTarget = $(target).offset().top;
+      var $target = $(target);
+      if ($target.length === 0) return;
+      
+      var $stickyTarget = $target.offset().top;
       var $trigger = $w.scrollTop() + $w.height();
       var sticky_scrolled = $trigger > $stickyTarget ? true : false;
       if(sticky_scrolled) {
@@ -92,6 +115,7 @@ function sticky(element,target,offset) {
       } else {
           $elm.attr('style','');
       }
+    }, 16);
   });
 }
 
@@ -102,14 +126,23 @@ function sticky(element,target,offset) {
  * @param {string} classname 
  */
 function scrollTopAddClass(el,classname) {
-  var $element = $(el),
-      default_position = $element.offset().top,
-      offset = 0;
-  if($(window).scrollTop() > default_position + offset) {
-      $element.addClass(classname);
-  } else {
-      $element.removeClass(classname);
+  var $element = $(el);
+  var offset = 0;
+  
+  // 初期化時の処理
+  function updateClass() {
+    if ($element.length === 0) return;
+    
+    var default_position = $element.offset().top;
+    if($(window).scrollTop() > default_position + offset) {
+        $element.addClass(classname);
+    } else {
+        $element.removeClass(classname);
+    }
   }
+  
+  // 初回実行
+  updateClass();
 
   var timer = false;
   $(window).on('scroll load', function(){
@@ -117,7 +150,7 @@ function scrollTopAddClass(el,classname) {
       clearTimeout(timer);
     }
     timer = setTimeout(function() {
-      scrollTopAddClass(el, classname);
+      updateClass();
     }, 50);
   });
 }
