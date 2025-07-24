@@ -6,7 +6,8 @@
     display: none;
   }
   &__container {
-    background: #fff;
+    background-color: darkblue;
+    color: white;
     border-bottom: 1px solid #ddd;
   }
 
@@ -19,7 +20,7 @@
     > li {
       position: relative;
       a {
-        color: blue;
+        color: inherit;
       }
       > a {
         display: block;
