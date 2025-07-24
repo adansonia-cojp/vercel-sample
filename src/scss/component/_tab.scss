@@ -1,0 +1,60 @@
+//---------------------------------------------------------
+//    uiTab
+//---------------------------------------------------------
+[data-ui-tab] {
+    >li {
+        cursor: pointer;
+    }
+}
+
+[data-ui-tab] + div {
+    position: relative;
+
+    >div {
+        transition: 0.3s;
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+    }
+
+    >div.current {
+        opacity: 1;
+        width: auto;
+        height: auto;
+    }
+}
+
+/* tab design */
+.c-tab {
+  &__header {
+    display: flex;
+  }
+    &__button {
+      flex: 1 1 auto;
+      margin-bottom: -1px;
+      padding: 15px;
+      background-color: #eee;
+      border-top: 4px solid #bfc0c0;
+      border-left: 1px solid #bfc0c0;
+      color: #909190;
+      text-align: center;
+      text-decoration: none;
+      &.current {
+        border-top: 4px solid #22b573;
+        color: #22b573;
+        background-color: #fff;
+        position: relative;
+        z-index: 1;
+      }
+    }
+
+    &__contents {
+        border-top: 1px solid #22b573;
+        background-color: #fff;
+        clear: both;
+        .inner {
+          padding: 30px;
+      }
+    }
+
+}

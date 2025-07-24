@@ -1,0 +1,15 @@
+.c-scroll-top {
+  position: fixed;
+  right: 60px;
+  bottom: 60px;
+
+  a {
+    display: block;
+    padding: 1em;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 50%;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

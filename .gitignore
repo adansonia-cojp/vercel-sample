@@ -1,0 +1,19 @@
+# ignore node dependency directories
+node_modules/
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+# ignore OS generated files
+package-lock.json
+
+# source maps
+*.map
+
+# dist
+dist/*
+!dist/.htaccess
+_delivery_*/
+Release/

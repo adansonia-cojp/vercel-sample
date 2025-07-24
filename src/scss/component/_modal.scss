@@ -1,0 +1,34 @@
+//----------------------------------------------------------
+//    Modal
+//----------------------------------------------------------
+// 参考資料
+// https://coliss.com/articles/build-websites/operation/css/prevent-scroll-chaining-overscroll-behavior.html
+// https://reference.hyper-text.org/html5/element/dialog/
+
+dialog {
+    background: none;
+    border: none;
+    padding: 40px 0;
+    &::backdrop {
+        background-color: rgba(0,0,30,0.5);
+    }
+}
+.c-modal {
+    &__container {
+        overscroll-behavior-y: contain;
+        overflow-y: auto;
+        max-width: 400px;
+        height: 300px;
+        padding: 1.5em;
+        background-color: #eee;
+    }
+    &__close {
+        position: absolute;
+        top: 0px;
+        right: 0;
+        height: 40px;
+        border: none;
+        background: none;
+        color: white;
+    }
+}

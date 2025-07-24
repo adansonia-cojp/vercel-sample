@@ -1,0 +1,10 @@
+.js-position {
+  position: fixed;
+  z-index: 100;
+  right: 0;
+  top: 50%;
+
+  .active {
+      color: #f00;
+  }
+}

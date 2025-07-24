@@ -1,0 +1,195 @@
+@use "sass:math";
+
+$breakpoint: 768px;
+
+@mixin pc {
+    @media (min-width: $breakpoint) {
+        @content;
+    }
+}
+@mixin tab {
+    @media (min-width: $breakpoint) and (max-width: 1024px) {
+        @content;
+    }
+}
+@mixin sp {
+    @media (max-width: $breakpoint - 1px) {
+        @content;
+    }
+}
+@mixin sp-ls {
+    @media (max-width: $breakpoint - 1px) and (orientation: landscape) {
+        @content;
+    }
+}
+@mixin ie {
+    @media all and (-ms-high-contrast: none) {
+        @content;
+    }
+}
+@mixin ie9 {
+    @media screen and (min-width: 0\0) and (min-resolution: .001dpcm) {
+        @content;
+    }
+}
+
+
+// mouse hover
+@mixin hover($opacity:0.7, $transition:0.3) {
+  transition: opacity #{$transition}s;
+
+  @include pc {
+    &:hover {
+      opacity: $opacity;
+    }
+  }
+}
+
+
+// センター揃え
+// arguments: x or y or xy
+@mixin center($pos: xy) {
+  position: absolute;
+  @if $pos == xy {
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+  } @else {
+    @if $pos == x {
+      left: 50%; transform: translateX(-50%);
+    }
+    @if $pos == y {
+      top: 50%; transform: translateY(-50%);
+    }
+  }
+}
+
+
+// ブラウザ幅いっぱい
+@mixin full {
+  margin-right: calc(50% - 50vw); margin-left: calc(50% - 50vw);
+}
+
+
+// 吹き出し
+@mixin balloon($width:10px, $height:5px, $color:#000, $position:bottom) {
+  position: relative;
+  @if ( $position == "top" ) {
+      &:after {
+          border-width: 0 math.div($width, 2) #{$height} math.div($width, 2);
+          border-color: transparent transparent $color transparent;
+          top         : -#{$height};
+          left        : calc( 50% - #{math.div($width, 2)} );
+      }
+  }
+  @else if ( $position == "right" ) {
+      &:after {
+          border-width: math.div($width, 2) 0 math.div($width, 2) #{$height};
+          border-color: transparent transparent transparent $color;
+          top         : calc( 50% - #{math.div($width, 2)} );
+          right       : -#{$height};
+      }
+  }
+  @else if ( $position == "bottom" ) {
+      &:after {
+          border-width: #{$height} math.div($width, 2) 0 math.div($width, 2);
+          border-color: $color transparent transparent transparent;
+          bottom      : -#{$height};
+          left        : calc( 50% - #{math.div($width, 2)} );
+      }
+  }
+  @else if ( $position == "left" ) {
+      &:after {
+          border-width: math.div($width, 2) #{$height} math.div($width, 2) 0;
+          border-color: transparent $color transparent transparent;
+          top         : calc( 50% - #{math.div($width, 2)} );
+          left        : -#{$height};
+      }
+  }
+  &:after {
+      content: "";
+      border-style: solid;
+      display: inline-block;
+      height: 0;
+      position: absolute;
+      width: 0;
+  }
+}
+
+
+// font family
+@mixin yu-min {
+  font-family: "Yu Mincho", "游明朝体", "YuMincho", "ヒラギノ明朝 Pro W3", 'Hiragino Mincho Pro', 'HiraMinProN-W3', serif;
+}
+
+@mixin yu-go {
+  font-family: "Yu Gothic", "游ゴシック体", "YuGothic", "ヒラギノ角ゴ Pro W3", 'Hiragino Kaku Gothic Pro', Meiryo, sans-serif;
+}
+
+
+// font-size, line-height, font-weight, text-align 指定
+@mixin text($size:14px, $height:23px, $bold:'', $align:'') {
+  font-size: $size;
+  line-height: math.div($height, $size);
+
+  @if $bold !='' {
+    font-weight: $bold;
+  }
+
+  @if $align !='' {
+    text-align: $align;
+  }
+}
+
+
+// line-clamp
+@mixin clamp($line: 5) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+}
+
+
+@mixin flex($justify:'', $align:'', $wrap:'', $column:'') {
+  display: flex;
+
+  @if $justify == start {
+      justify-content: flex-start;
+  } @else if $justify == end {
+      justify-content: flex-end;
+  } @else if $justify == center {
+      justify-content: center;
+  } @else if $justify == between {
+      justify-content: space-between;
+  } @else if $justify == around {
+      justify-content: space-around;
+  }
+
+  @if $align == start {
+      align-items: flex-start;
+  } @else if $align == end {
+      align-items: flex-end;
+  } @else if $align == center {
+      align-items: center;
+  } @else if $align == baseline {
+      align-items: baseline;
+  } @else if $align == stretch {
+      align-items: stretch;
+  }
+
+  @if $wrap == nowrap {
+      flex-wrap: nowrap;
+  } @else if $wrap == wrap {
+      flex-wrap: wrap;
+  } @else if $wrap == reverse {
+      flex-wrap: wrap-reverse;
+  }
+
+  @if $column == row {
+      flex-direction: row;
+  } @else if $column == column {
+      flex-direction: column;
+  } @else if $column == row-reverse {
+      flex-direction: row-reverse;
+  } @else if $column == column-reverse {
+      flex-direction: column-reverse;
+  }
+}

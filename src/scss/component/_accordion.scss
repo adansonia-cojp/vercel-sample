@@ -1,0 +1,69 @@
+//----------------------------------------------------------
+//    uiAccordion
+//----------------------------------------------------------
+.c-accordion {
+  position: relative;
+  margin-bottom: 1rem;
+
+  &__content {
+      padding: 40px;
+      line-height: 2;
+  }
+
+  &__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 15px auto 0;
+      height: 3em;
+      width: 150px;
+      border: 4px solid #dd721a;
+      background-color: #e7883a;
+      font-size: 18px;
+      cursor: pointer;
+
+      &::before {
+          content: '開く';
+      }
+
+      .open &::before {
+          content: '閉じる';
+      }
+  }
+
+  &__head {
+    position: relative;
+    &::after {
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        margin-top: -0.75rem;
+        width: 1rem;
+        height: 1rem;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+        content: '';
+        pointer-events: none;
+    }
+
+    .open &::after {
+        margin-top: -.25rem;
+        transform: rotate(180+45deg);
+    }
+    button {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        position: relative;
+        width: 100%;
+        padding: 1rem;
+        background-color: rgb(2, 122, 102);
+        color: #fff;
+        border: none;
+        text-align: left;
+        font-size: 100%;
+        cursor: pointer;
+    }
+  }
+}

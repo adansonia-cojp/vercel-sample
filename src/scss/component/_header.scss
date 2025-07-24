@@ -1,0 +1,18 @@
+@use "foundation" as *;
+
+.c-header {
+  &__bg {
+    background: white;
+    border-bottom: 1px solid #ddd;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+  }
+
+  &__logo {
+    display: block;
+  }
+}

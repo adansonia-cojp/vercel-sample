@@ -1,0 +1,63 @@
+@use "mixin" as *;
+@use "variable" as *;
+
+html { 
+  font-size: 2.666vw;
+  @include pc { 
+    font-size: 125%;
+  }
+}
+body {
+    overflow-x: hidden;
+    @include yu-go;
+    color: $COLOR_TEXT_BASE;
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: 0px;
+    -webkit-text-size-adjust: 100%;
+    @include pc {
+      font-size: 16px;
+    }
+}
+
+*,*::after,*::before {
+  box-sizing: border-box;
+}
+
+ol,ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+button,
+input[type=button],
+input[type=submit] {
+  -webkit-appearance: none;
+  appearance: none;
+  &:focus-visible {
+    outline: 2px solid blue;
+  }
+}
+
+a {
+  color: $COLOR_TEXT_LINK;
+  text-decoration: underline;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid blue;
+  }
+}
+
+main {
+  display: block;
+}

@@ -1,0 +1,102 @@
+@use "foundation" as *;
+
+/*-----------------------------------------------------------
+    toggleMenu setting
+-----------------------------------------------------------*/
+#js-toggleMenu {
+  left: 100%;
+  top: 0;
+  position: fixed;
+  z-index: 9999;
+}
+
+.c-menu {
+  height: 100dvh;
+  width: 90vw;
+  max-width: 500px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  transition: transform 0.3s;
+
+  .open & {
+    transform: translateX(-100%);
+  }
+
+  &__container {
+    background-color: #fff;
+    height: 100%;
+    padding-top: 5rem;
+  }
+
+  &__button {
+    position: absolute;
+    right: 100%;
+    top: 0;
+    z-index: 10000;
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    border: none;
+    background-color: #fff;
+    color: transparent;
+    overflow: hidden;
+    text-indent: -9999px;
+  
+    &:before,
+    &:after {
+      content: "";
+    }
+  
+    &:before,
+    &:after,
+    i {
+      display: block;
+      position: absolute;
+      left: 50%;
+      height: 2px;
+      width: 50%;
+      margin: -1px 0 0 -25%;
+      background-color: #000;
+      transition: 0.3s;
+    }
+  
+    &:before {
+      top: 40%;
+    }
+  
+    i {
+      top: 50%;
+    }
+  
+    &:after {
+      top: 60%;
+    }
+  
+    &.open {
+      i {
+        opacity: 0;
+      }
+  
+      &::before {
+        transform: rotate(225deg);
+        top: 50%;
+      }
+  
+      &::after {
+        transform: rotate(135deg);
+        top: 50%;
+      }
+
+    }
+  }
+
+  &__list {
+    li {
+      border-bottom: 1px solid #ddd;
+    }
+    a {
+      display: block;
+      padding: 16px;
+    }
+  }
+}

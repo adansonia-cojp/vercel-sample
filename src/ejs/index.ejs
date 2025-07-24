@@ -1,0 +1,173 @@
+<% 
+data = {
+  title : 'トップページ',
+  description: '',
+  pathname: '/',
+  og: {
+    title: '',
+    description: '',
+    imagePath: ''
+  },
+  page_id : 'home',
+  head: `
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/css/swiper.min.css">
+  `,
+  footer: `
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.2/js/swiper.min.js"></script>
+    <script>
+      var swiper = new Swiper('.swiper-container', {
+        speed: 1000,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+      });
+    </script>
+  `
+};
+%><%- include('./_include/_header', { data:data }) %>
+
+<main class="c-container">
+
+  <section class="section" id="section0">
+
+    <h1><%= 'Hello, EJS'%></h1>
+
+  </section>
+
+  <section class="section" id="section1">
+    <h2>Swiper</h2>
+    <div class="swiper" style="margin:0 auto">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="assets/images/universe.jpg" alt="">
+          </div>
+          <div class="swiper-slide">
+            <img src="assets/images/universe.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="section2">
+    <h2>モーダル</h2>
+
+    <button id="buttonOpen" modal-open data-target="modal-1">モーダルを開く</button>
+
+    <dialog id="modal-1" class="c-modal">
+      <div class="c-modal__container">
+        <div class="focus-trap">
+          <button class="c-modal__close" type="button" modal-close>閉じる</button>
+          <h2>モーダルコンテンツ</h2>
+          <p>フォーカストラップ</p>
+          <input type="text" id="text">
+          <input type="checkbox" id="check">
+          <input type="radio" name="oge" id="radio">
+          <button type="button" id="button">ボタン</button>
+          <a href="hoge.html" tabindex="0" id="link">Link</a>
+        </div>
+      </div>
+    </dialog>
+    
+  </section>
+
+  <section class="section" id="section3">
+    <h2>タブ</h2>
+
+    <div class="">
+      <div class="c-tab">
+        <ul class="c-tab__header" data-ui-tab>
+          <li class="c-tab__button"><span class="label">タブ1</span></li>
+          <li class="c-tab__button"><span class="label">タブ2</span></li>
+          <li class="c-tab__button"><span class="label">タブ3</span></li>
+          <li class="c-tab__button"><span class="label">タブ4</span></li>
+        </ul>
+        <div class="c-tab__contents">
+          <div class="item">
+            <div class="inner">
+              親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。
+            </div>
+          </div>
+          <div class="item">
+            <div class="inner">
+              なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。
+            </div>
+          </div>
+          <div class="item">
+            <div class="inner">
+              新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。
+            </div>
+          </div>
+          <div class="item">
+            <div class="inner">
+              弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰を抜かす奴があるかと云ったから、この次は抜かさずに飛んで見せますと答えた。
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="section4">
+    <h2>アコーディオン</h2>
+    <div class="">
+      <dl class="c-accordion open" data-accordion="main">
+        <dt class="c-accordion__head">
+          <button data-accordion="toggle" type="button">
+            <span class="num">Q1</span>
+            <span class="txt">アコーディオンA</span>
+          </button>
+        </dt>
+        <dd class="c-accordion__content" data-accordion="content">
+          <p class="min">游明朝<br />親譲りの<strong>無鉄砲</strong>で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。</p>
+          <p class="noto">NOTO<br />親譲りの<strong>無鉄砲</strong>で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。</p>
+          <p class="">游ゴシック<br />親譲りの<strong>無鉄砲</strong>で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。</p>
+        </dd>
+      </dl>
+      <div class="c-accordion" data-accordion="main">
+        <div class="c-accordion__head">
+          <button data-accordion="toggle" type="button">
+            <span class="num">Q2</span>
+            <span class="txt">アコーディオンB</span>
+          </button>
+        </div>
+        <div class="c-accordion__content" data-accordion="content">
+          <p class="min">游明朝<br />親譲りの<strong>無鉄砲</strong>で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。</p>
+          <p class="noto">NOTO<br />親譲りの<strong>無鉄砲</strong>で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。</p>
+          <p class="">游ゴシック<br />親譲りの<strong>無鉄砲</strong>で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。</p>
+        </div>
+        <button class="c-accordion__button" data-accordion="toggle" type="button"></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="section5">
+    <h2>吹き出し</h2>
+    <div class="arrow --bottom">
+      <p><em>Hello !!</em></p>
+      <p class="f-go">ゴシック体<b>ゴシック体</b></p>
+      <p class="f-min">明朝体<b>明朝体</b>明朝体</p>
+    </div>
+    <div class="arrow --left">
+      <p><em>Hello !!</em></p>
+      <p class="f-go">ゴシック体<b>ゴシック体</b></p>
+      <p class="f-min">明朝体<b>明朝体</b>明朝体</p>
+    </div>
+    <div class="arrow --right">
+      <p><em>Hello !!</em></p>
+      <p class="f-go">ゴシック体<b>ゴシック体</b></p>
+      <p class="f-min">明朝体<b>明朝体</b>明朝体</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div style="height:80vh">
+
+    </div>
+  </section>
+
+</main>
+
+<%- include('./_include/_footer', { data:data }) %>

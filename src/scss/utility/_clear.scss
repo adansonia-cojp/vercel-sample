@@ -1,0 +1,8 @@
+.clear{clear:both}
+br.clear{font-size:1px; line-height:100%; clear:both}
+div.clear{line-height:100%;  clear:both}
+.clearfix:after{ content:"";  display:block;  height:0;  clear:both;  visibility:hidden}
+.clearfix{zoom:1}
+* html .clearfix{height:1%}
+.clearfix{display:block}
+.imgfix{font-size:1px;  line-height:1px}

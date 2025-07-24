@@ -1,0 +1,50 @@
+@use "foundation" as *;
+
+// サンプルなので削除
+
+.arrow {
+  background-color: pink;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+  &.--bottom {
+    @include balloon(16px, 16px, pink, bottom);
+  }
+  &.--left {
+    @include balloon(16px, 16px, pink, left);
+    margin-left: 16px;
+  }
+  &.--right {
+    @include balloon(16px, 16px, pink, right);
+    margin-right: 16px;
+  }
+}
+
+.center {
+  @include center(xy);
+}
+
+.flex {
+  @include flex(center, center)
+}
+
+.bg {
+  background: black;
+  color: #fff;
+  padding: 20px;
+}
+
+.section {
+  margin: 0 calc(50% - 50vw);
+  padding: 64px calc(50vw - 50%);
+  h1 {
+    margin: 0 0 16px 0;
+    font-size: 48px;
+    font-weight: bold;
+  }
+  h2 {
+    margin: 0 0 16px 0;
+    font-size: 32px;
+    font-weight: bold;
+  }
+}

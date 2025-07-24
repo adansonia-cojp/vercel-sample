@@ -1,0 +1,25 @@
+<% 
+data = {
+  title: 'About',
+  description: 'Aboutなディスクリプション',
+  pathname: '/about/',
+  og: {
+    title: 'About（OG用）',
+    description: 'Aboutなディスクリプション（OG用）',
+    imagePath: '/about_ogimage.jpg'
+  },
+  page_id: 'about',
+  head: `
+  `,
+  footer: `
+  `
+}
+%><%- include('../_include/_header', { data: data }) %>
+
+<main class="c-container">
+
+<h1><%= 'This page About 2' %></h1>
+
+</main>
+
+<%- include('../_include/_footer', { data: data }) %>

@@ -1,0 +1,16 @@
+@use "foundation" as *;
+
+.c-footer {
+  &__bg {
+    border-top: 1px solid #ddd;
+    background-color: #eee;
+    padding: 64px 0;
+  }
+
+  &__copyright {
+    display: block;
+    color: #666;
+    font-size: 16px;
+    text-align: center;
+  }
+}

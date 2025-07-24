@@ -1,0 +1,93 @@
+<% 
+const COMMON = {
+  sitename: 'サイト名',
+  description: '共通ディスクリプション',
+  url: 'https://hogehoge.jp',
+  og: {
+    imagePath: '/ogimage.jpg'
+  }
+}
+%><!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+<!--[if IE]>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="imagetoolbar" content="no">
+<![endif]-->
+  <script>
+    var ua = navigator.userAgent;
+    if ((ua.indexOf('Android') > 0 && ua.indexOf('Mobile') == -1) || ua.indexOf('iPad') > 0 || ua.indexOf('Kindle') > 0 || ua.indexOf('Silk') > 0) {
+      document.write('<meta name="viewport" content="width=1040">');
+    } else {
+      document.write('<meta name="viewport" content="width=device-width">');
+    }
+  </script>
+  <meta name="format-detection" content="telephone=no">
+  <title><%= data.title ? data.title + ' | ' + COMMON.sitename : COMMON.sitename %></title>
+  <meta name="description" content="<%= data.description ? data.description : COMMON.description %>" >
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="<%= COMMON.url %><%= data.pathname ? data.pathname : '' %>" >
+  <meta property="og:title" content="<%= data.og && data.og.title ? data.og.title + ' | ' + COMMON.sitename : COMMON.sitename %>" >
+  <meta property="og:description" content="<%= data.og && data.og.description ? data.og.description : COMMON.description %>" >
+  <meta property="og:image" content="<%= COMMON.url %><%= data.og && data.og.imagePath && data.og.imagePath != '' ? data.og.imagePath : COMMON.og.imagePath %>" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+  <script src="/assets/js/bundle.js" async></script>
+  <%- data.head %>
+</head>
+
+<body id="<%= data.page_id ? data.page_id : '' %>" class="<%= data.page_id ? data.page_id : '' %>">
+
+  <header class="c-header">
+    <div class="c-header__bg">
+      <div class="c-container">
+        <div class="c-header__content">
+          <div class="c-header__logo">
+            <a href="">
+              <img class="logo" src="" alt="ロゴ画像">
+            </a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="c-gnav">
+    <div class="c-gnav__container">
+      <div class="c-container">
+        <ul class="c-gnav__list">
+          <li>
+            <a href="/about/">about</a>
+            <ul class="c-gnav__list__child">
+              <li><a href="/about/">about</a></li>
+              <li><a href="/nav2/">nav1-2</a></li>
+              <li><a href="/nav3/">nav1-3</a></li>
+            </ul>
+          </li>
+          <li><a href="#section1">section1</a></li>
+          <li><a href="#section2">section2</a></li>
+          <li><a href="#section3">section3</a></li>
+          <li><a href="#section4">section4</a></li>
+          <li><a href="#section5">section5</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="js-toggleMenu" class="">
+    <nav class="c-menu">
+      <div class="c-menu__container">
+        <ul class="c-menu__list">
+          <li><a href="/">トップページ</a></li>
+          <li><a href="/about/">about</a></li>
+          <li><a href="#">スマホメニュー1</a></li>
+          <li><a href="#">スマホメニュー2</a></li>
+          <li><a href="#">スマホメニュー3</a></li>
+          <li><a href="#">スマホメニュー4</a></li>
+          <li><a href="#">スマホメニュー5</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>

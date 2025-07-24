@@ -1,0 +1,76 @@
+@use "foundation" as *;
+/* グローバルナビ */
+
+.c-gnav {
+  @include sp {
+    display: none;
+  }
+  &__container {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+  }
+
+  &__list {
+    display: flex;
+    position: relative;
+    padding: 0;
+    font-size: 18px;
+
+    > li {
+      position: relative;
+      a {
+        color: blue;
+      }
+      > a {
+        display: block;
+        margin-bottom: 0;
+        padding: 15px;
+        border-bottom: none;
+        text-decoration: none;
+  
+        &:hover {
+          color: skyblue;
+        }
+
+      }
+    }
+    
+
+    &__child {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      z-index: 99999;
+      background: #fff;
+      box-shadow:rgba(0, 0, 0, 0.5) 0px 4px 4px;
+      white-space: nowrap;
+      transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
+      transform: translateY(-10px);
+      opacity: 0;
+      visibility: hidden;
+      > li {
+        &:not(:first-child) {
+          border-top: 1px solid #ddd;
+        }
+      }
+      a {
+        display: block;
+        padding: 0.5em 1em;
+      }
+      a:focus ~ &,
+      li:hover & {
+        opacity: 1;
+        transform: translateY(0px);
+        visibility: visible;
+      }
+
+      &.horizontal {
+        width: 100%;
+        display: flex;
+        li:not(:last-child) {
+            margin-right: 2em;
+        }
+      }
+    }
+  }
+}
