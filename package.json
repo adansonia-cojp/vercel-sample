@@ -17,6 +17,7 @@
   "devDependencies": {
     "@babel/core": "^7.18.10",
     "@babel/preset-env": "^7.18.10",
+    "@vercel/edge": "^1.2.2",
     "autoprefixer": "^9.8.6",
     "babel-loader": "^10.0.0",
     "browser-sync": "^2.27.4",
